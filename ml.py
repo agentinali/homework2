@@ -2,7 +2,14 @@
 import time
 import re
 from collections import Counter
+import Levenshtein
 
+class TextAnalyse:
+    def LevenshiteinSimilarity(self,string1,string2):
+        return Levenshtein.ratio(string1,string2)
+    def similay(self,string1,string2):
+        similar = self.LevenshiteinSimilarity(string1,string2)
+        return similar
 # 21行python拼寫檢查器,程式開始
 def words(text):
     return re.findall(r'\w+', text.lower())
@@ -74,3 +81,7 @@ def Testset(lines):
 
 if __name__ == '__main__':
     spelltest(Testset(open('spell-testset1.txt')))
+
+if __name__ == '__main__':
+    t = TextAnalyse()
+    print t.similay('基于YYYssssssssssss的xxxxxx001项目','YYYssssssssssss')
